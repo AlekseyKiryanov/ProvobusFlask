@@ -1,0 +1,156 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Логи [Провобус]</title>
+    <link rel='icon' href='/static/111.png' type='image/png'>
+    <style>
+        body{
+        background: #101010;
+        color: #DDDDDD;
+        }
+        h1{
+        text-align: center;
+        background: #6B0369 ;
+        font-size: 1.5em;
+        font-family: Georgia, sans-serif;
+        margin: 0em -0.35em 1px -0.35em;
+        color: #DDDDDD;
+        }
+        h2{
+        font-size: 1.4em;
+        width: 100%;
+        font-family: Georgia, sans-serif;
+        text-align: center;
+        margin: 0.1em -0.35em 0px -0.35em;
+        }
+        .label{
+        padding: 10px;
+        background-color: #444444;
+        text-align: center;
+            width: 700px;
+        margin: 20px auto;
+
+        }
+        a:link {
+
+          color: #DDDDDD;
+          /*background: #6B0369;*/
+          font-family: Arial;
+          font-weight: bold;
+        }
+        a:visited {
+
+          color: #AAAAAA;
+          /*background: rgba(0, 0, 0, 0);*/
+          font-family: Arial;
+          font-weight: normal;
+        }
+
+
+
+        caption{
+          color: #DDDDDD;
+        font-size: 25px;
+
+        }
+
+        textarea:focus {
+          border: 3px solid #555;
+        }
+
+
+        table{
+        font-size: 20px;
+        width: 95%;
+        margin: auto;
+        }
+
+        .linkbutton {
+          text-align: center;
+          width: 300px;
+          height: 20px;
+          padding: 0.3em 1em;
+          display: block;
+          color: #DDDDDD;
+          border: 3px solid #ccc;
+          background-color: #444444;
+          margin: 10px auto 0px auto;
+        }
+
+        .linkbutton:hover {
+          border: 3px solid #555;
+        }
+
+
+        .moderation{
+            background-color: #8f7e00;
+        }
+
+        .banned{
+            background-color: #63000c;
+        }
+
+        form{
+            margin: 0;
+        }
+
+tr:nth-child(odd) {
+height: 1.3em;
+background-color: #444444;
+}
+tr:nth-child(even) {
+height: 1.3em;
+background-color: #343434;
+}
+th {
+	background-color: #002080;
+	color: #f7f7f7;
+}
+        table {
+
+           width: 100%;
+        }
+
+             input[type=submit] {
+font-size: 15px;
+  width: 100%;
+  padding: 5px;
+  margin: 3px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+        input[type=submit]:hover {
+  border: 3px solid #555;
+}
+
+    </style>
+</head>
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+
+<h2>Действия редакции</h2>
+
+<table>
+    <tr>
+        <th width='30%'>Автор</th>
+        <th width='35%'>Старое</th>
+        <th width='35%'>Новое</th>
+
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{user["NICK"]}}<br>{{user["DID"]}}<br>{{user["DONE"]}}</td>
+        <td>{{user["OLDA"]}}<br>{{user["OLDB"]}}<br>{{user["OLDC"]}}</td>
+        <td>{{user["NEWA"]}}<br>{{user["NEWB"]}}<br>{{user["NEWC"]}}</td>
+
+    </tr>
+    {%endfor%}
+
+</table>
+</body>
+</html>

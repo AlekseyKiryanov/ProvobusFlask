@@ -1,0 +1,255 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Изменение парка [Провобус]</title>
+    <link rel='icon' href='/static/111.png' type='image/png'>
+    <style>
+        body{
+
+           background: #101010;
+       color: #DDDDDD;
+         }
+     h1{
+     text-align: center;
+     background: #6B0369 ;
+     font-size: 1.5em;
+     font-family: Georgia, sans-serif;
+     margin: 0em -0.35em 1px -0.35em;
+     color: #DDDDDD;
+     }
+     h5 {
+     text-align: center;
+     width: 100%;
+     }
+     h2{
+         color: #FFFF00;
+     font-size: 1.4em;
+     width: 100%;
+     font-family: Georgia, sans-serif;
+     text-align: center;
+     margin: 0.1em -0.35em 20px -0.35em;
+     }
+     h3{
+     font-size: 23px;
+     width: 100%;
+     font-family: Georgia, sans-serif;
+     text-align: center;
+     margin: 0.1em -0.35em 0.1em -0.35em;
+     }
+
+     .label{
+     padding: 10px;
+     background-color: #444444;
+     text-align: center;
+         width: 700px;
+     margin: auto;
+     }
+     img {margin: 15px 0px 15px 15px;
+     max-height:40px;
+     float: left;
+     }
+     .button{
+     text-decoration: none;
+     }
+     a:link {
+
+       color: #DDDDDD;
+       /*background: #6B0369;*/
+       font-family: Arial;
+       font-weight: bold;
+     }
+     a:visited {
+
+       color: #AAAAAA;
+       /*background: rgba(0, 0, 0, 0);*/
+       font-family: Arial;
+       font-weight: normal;
+     }
+     input[type=text] {
+     font-size: 20px;
+       width: 100%;
+       padding: 12px 20px;
+       margin: 8px 0;
+       box-sizing: border-box;
+       border: 3px solid #ccc;
+       -webkit-transition: 0.5s;
+       transition: 0.5s;
+       outline: none;
+     }
+
+     input[type=date] {
+     font-size: 20px;
+       width: 100%;
+       padding: 12px 20px;
+       margin: 8px 0;
+       box-sizing: border-box;
+       border: 3px solid #ccc;
+       -webkit-transition: 0.5s;
+       transition: 0.5s;
+       outline: none;
+     }
+
+
+     input[type=submit] {
+     font-size: 20px;
+       width: 50%;
+       padding: 12px 20px;
+       margin: 8px 0;
+       box-sizing: border-box;
+       border: 3px solid #ccc;
+       -webkit-transition: 0.5s;
+       transition: 0.5s;
+       outline: none;
+     }
+
+     input[type=text]:focus {
+       border: 3px solid #555;
+     }
+
+     input[type=date]:focus {
+       border: 3px solid #555;
+     }
+
+     input[type=submit]:hover {
+       border: 3px solid #555;
+     }
+
+     select {
+     font-size: 20px;
+       width: 100%;
+       padding: 12px 20px;
+       margin: 8px 0;
+       box-sizing: border-box;
+       border: 3px solid #ccc;
+       -webkit-transition: 0.5s;
+       transition: 0.5s;
+       outline: none;
+     }
+
+     select:focus {
+       border: 3px solid #555;
+     }
+
+     textarea {
+     font-size: 20px;
+       width: 100%;
+       max-width: 100%;
+       height: 150px;
+       padding: 12px 20px;
+       margin: 8px 0;
+       box-sizing: border-box;
+       border: 3px solid #ccc;
+       -webkit-transition: 0.5s;
+       transition: 0.5s;
+       outline: none;
+     }
+
+
+     label {
+       color: #DDDDDD;
+     font-size: 20px;
+
+     }
+     caption{
+       color: #DDDDDD;
+     font-size: 25px;
+
+     }
+
+     textarea:focus {
+       border: 3px solid #555;
+     }
+
+
+     table{
+
+     width: 95%;
+     margin: auto;
+     }
+    </style>
+
+</head>
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>Редактировать Парк</h2>
+
+<section>
+    <div class='label'>
+        <form action='/edit_atp_form' method='post'>
+            <table>
+
+
+                <tr>
+                    <td width='40%'><label for="new_atp_id">Ссылка на парк: <br>латиницей до 20 символов</label></td>
+                    <td width='60%'><input type="text" id="new_atp_id" name="new_atp_id" value="{{atp['ATP_ID']}}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width='40%'><label for="name">Название:<br>(до 50 символов)</label></td>
+                    <td width='60%'><input type="text" id="name" name="name" value="{{atp['NAME']}}"/></td>
+                </tr>
+                <tr>
+                    <td width='40%'><label for="about">Описание:<br>(до 255 символов)</label></td>
+                    <td width='60%'><textarea id="about" name="about">{{atp['ABOUT']}}</textarea></td>
+                </tr>
+
+                <tr>
+                    <td width='40%'><label for="city">Городские маршруты:<br>Только номера<br>(до 50 символов)</label>
+                    </td>
+                    <td width='60%'><input type="text" id="city" name="city" value="{{atp['CITI_ROUTES']}}"/></td>
+                </tr>
+                <tr>
+                    <td width='40%'><label for="commuter">Пригородные:<br>(до 50 символов)</label></td>
+                    <td width='60%'><input type="text" id="commuter" name="commuter"
+                                           value="{{atp['COMMUTER_ROUTES']}}"/></td>
+                </tr>
+                <tr>
+                    <td width='40%'><label for="intercity">Междугородние:<br>(до 50 символов)</label></td>
+                    <td width='60%'><input type="text" id="intercity" name="intercity"
+                                           value="{{atp['INTERCITY_ROUTES']}}"/></td>
+                </tr>
+                <tr>
+                    <td width='40%'><label for="vk">Группа ВК:<br>vk.com/ опустить<br>(до 50 символов)</label></td>
+                    <td width='60%'><input type="text" id="vk" name="vk" value="{{atp['VK']}}"/></td>
+                </tr>
+
+
+                <tr>
+                    <td width='40%'><label for="stage">Состояние:</label></td>
+                    <td width='60%'>
+                        <select id="stage" name="stage">
+                            {%for stage in stages %}
+                            {% if stage['i']==atp['STAGE'] %}
+                            <option value="{{stage['i']}}" selected='selected'>{{stage['stage']}}</option>
+                            {%else%}
+                            <option value="{{stage['i']}}">{{stage['stage']}}</option>
+                            {%endif%}
+                            {% endfor %}
+                        </select></td>
+                </tr>
+
+
+                <tr>
+                    <td width='40%'><label for="type">Категория:</label></td>
+                    <td width='60%'>
+                        <select id="type" name="type">
+                            {%for type in types %}
+                            {% if atp['TYPE']==type %}
+                            <option value="{{type}}" selected='selected'>{{type}}</option>
+                            {%else%}
+                            <option value="{{type}}">{{type}}</option>
+                            {%endif%}
+                            {% endfor %}
+                        </select></td>
+                </tr>
+
+
+            </table>
+            <input type="hidden" id="old_atp_id" name="old_atp_id" value="{{atp['ATP_ID']}}"/>
+            <input type="submit" value="Сохранить">
+        </form>
+    </div>
+</section>
+</body>
+</html>

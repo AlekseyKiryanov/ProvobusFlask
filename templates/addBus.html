@@ -1,0 +1,320 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Запись ПС [Провобус]</title>
+  <link rel='icon' href='/static/111.png' type='image/png'>
+  <style>
+   body{
+
+  	background: #101010;
+  color: #DDDDDD;
+	}
+h1{
+text-align: center;
+background: #6B0369 ;
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+margin: 0em -0.35em 1px -0.35em;
+color: #DDDDDD;
+}
+h5 {
+text-align: center;
+width: 100%;
+}
+h2{
+    color: #FFFF00;
+font-size: 1.4em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 20px -0.35em;
+}
+h3{
+font-size: 23px;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0.1em -0.35em;
+}
+
+.label{
+padding: 10px;
+background-color: #444444;
+text-align: center;
+	width: 700px;
+margin: auto;
+}
+img {margin: 15px 0px 15px 15px;
+max-height:40px;
+float: left;
+}
+.button{
+text-decoration: none;
+}
+a:link {
+
+  color: #DDDDDD;
+  /*background: #6B0369;*/
+  font-family: Arial;
+  font-weight: bold;
+}
+a:visited {
+
+  color: #AAAAAA;
+  /*background: rgba(0, 0, 0, 0);*/
+  font-family: Arial;
+  font-weight: normal;
+}
+input[type=text] {
+font-size: 20px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=date] {
+font-size: 20px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+input[type=submit] {
+font-size: 20px;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+input[type=date]:focus {
+  border: 3px solid #555;
+}
+
+input[type=submit]:hover {
+  border: 3px solid #555;
+}
+
+select {
+font-size: 20px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+select:focus {
+  border: 3px solid #555;
+}
+
+textarea {
+font-size: 20px;
+  width: 100%;
+  max-width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+label {
+  color: #DDDDDD;
+font-size: 20px;
+	
+}
+caption{
+  color: #DDDDDD;
+font-size: 25px;
+	
+}
+
+textarea:focus {
+  border: 3px solid #555;
+}
+
+
+table{
+
+width: 95%;
+margin: auto;
+}
+ </style>
+
+ </head>
+ <body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>Создание автобуса</h2>
+
+
+<section>
+   <div class='label'>
+      <form>
+      <table>
+       <caption>Основные данные</caption>
+       
+      <tr><td width='40%'><label for="atp">АТП:</label></td><td width='60%'>
+      <select id="atp" name="atp"  onchange="saveAtp()">
+          {%for atp in atps %}
+            <option value="{{atp['ATP_ID']}}">{{atp['ATP_ID']}}</option>
+          {% endfor %}
+      </select></td></tr>
+       
+<tr><td width='40%'><label for="number">Гос. номер (до 9 знаков):<br>кирилицей без пробелов</label></td><td width='60%'><input type="text" id="number" name="number" placeholder="M018TA77" onchange="saveNumber()"></td></tr>
+
+
+          <tr><td width='40%'><label for="model">Модель:<br>(до 50 символов)</label></td><td width='60%'>
+
+                    <select id="model" name="model"  onchange="saveModel()">
+          {%for model in models %}
+            <option value="{{model['MODEL']}}">{{model['MODEL']}}</option>
+          {% endfor %}
+      </select></td></tr>
+
+
+
+
+
+
+          <tr><td width='40%'><label for="park">Парк:<br>(до 20 символов)</label></td><td width='60%'><input type="text" id="park" name="park" placeholder="АТП №2" onchange="savePark()"></td></tr>
+
+<tr><td width='40%'><label for="stage">Состояние:</label></td><td width='60%'>
+      <select id="stage" name="stage"  onchange="saveStage()">
+          {%for stage in stages %}
+              <option value="{{stage['i']}}">{{stage['stage']}}</option>
+          {% endfor %}
+      </select></td></tr>
+
+<tr><td width='40%'><label for="made">Построен:<br>Пожалуйста, загуглите и укажите актуальный год!</label></td><td width='60%'><input type="date" id="made" name="made" onchange="saveMade()"/></td></tr>
+<tr><td width='40%'><label for="trans">Поступил на предприятие:<br>Релиз обновы/трудоустройство сотрудника</label></td><td width='60%'><input type="date" id="trans" name="trans" onchange="saveTrans()"/></td></tr>
+<tr><td width='40%'><label for="start">Старт:<br>Релиз обновы/трудоустройство сотрудника</label></td><td width='60%'><input type="date" id="start" name="start" onchange="saveStart()"/></td></tr>
+<tr><td width='40%'><label for="end">До:<br>понятно</label></td><td width='60%'><input type="date" id="end" name="end" onchange="saveEnd()"/></td></tr>
+<tr><td width='40%'><label for="deleted">Списан:<br>понятно</label></td><td width='60%'><input type="date" id="deleted" name="deleted" onchange="saveDeleted()"/></td></tr>
+
+
+<tr><td width='40%'><label for="about">Примечание:<br>(до 100 символов)</label></td><td width='60%'><textarea onchange="saveAbout()" id="about" name="about" placeholder="Маршруты: 7/114. До ХХ - АТП 'Мегаполис'. ХХ - ДТП. Для внутренней аренды. Проходит ТР-3."></textarea></td></tr>
+
+              
+       
+       
+
+      </table>
+      
+<input type="submit" value="Сохранить">
+      </form>
+
+
+<script>
+    document.getElementById('made').value = localStorage.getItem("made");
+    document.getElementById('start').value = localStorage.getItem("start");
+    document.getElementById('end').value = localStorage.getItem("end");
+    document.getElementById('deleted').value = localStorage.getItem("deleted");
+    document.getElementById('number').value = localStorage.getItem("number");
+    document.getElementById('model').value = localStorage.getItem("model");
+document.getElementById('stage').value = localStorage.getItem("stage");
+document.getElementById('atp').value = localStorage.getItem("atp");
+document.getElementById('about').value = localStorage.getItem("about");
+document.getElementById('park').value = localStorage.getItem("park");
+document.getElementById('trans').value = localStorage.getItem("trans");
+
+    function saveMade(){
+        localStorage.setItem("made", document.querySelector('[name="made"]').value);
+    }
+    function saveStart(){
+        localStorage.setItem("start", document.querySelector('[name="start"]').value);
+    }
+    function saveEnd(){
+        localStorage.setItem("end", document.querySelector('[name="end"]').value);
+    }
+    function saveDeleted(){
+        localStorage.setItem("deleted", document.querySelector('[name="deleted"]').value);
+    }
+    function saveNumber(){
+        localStorage.setItem("number", document.querySelector('[name="number"]').value);
+    }
+    function saveModel(){
+        localStorage.setItem("model", document.querySelector('[name="model"]').value);
+    }
+    function saveStage(){
+        localStorage.setItem("stage", document.querySelector('[name="stage"]').value);
+    }
+    function saveAtp(){
+        localStorage.setItem("atp", document.querySelector('[name="atp"]').value);
+    }
+    function saveAbout(){
+        localStorage.setItem("about", document.querySelector('[name="about"]').value);
+    }
+    function savePark(){
+        localStorage.setItem("park", document.querySelector('[name="park"]').value);
+    }
+    function saveTrans(){
+        localStorage.setItem("trans", document.querySelector('[name="trans"]').value);
+    }
+
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', evt => {
+      
+    //alert(document.querySelector('[name="made"]').value);
+    
+    
+    
+    
+
+         
+	if ( document.querySelector('[name="number"]').value.length > 9 || document.querySelector('[name="number"]').value.length < 1){
+           alert('Некоррекная длина номера');
+	} else if ( document.querySelector('[name="model"]').value.length > 50 || document.querySelector('[name="model"]').value.length < 3){
+           alert('Некоррекная длина модели');
+	} else if ( document.querySelector('[name="about"]').value.length > 100){
+           alert('Некоррекная длина описания');
+	} else{
+	    
+       
+        evt.preventDefault();
+        fetch('add_bus_form', {
+            method: 'POST',
+            body: new FormData(form)
+        }).then(function(response){
+            alert('База данных вернула пустой результат. Проверьте автобус на странице АТП во втором окне');
+        }).catch(function(error){
+        console.log(error);
+        });
+
+	}
+
+        
+    })
+</script>
+   </div>
+</section> 
+</body>
+</html>

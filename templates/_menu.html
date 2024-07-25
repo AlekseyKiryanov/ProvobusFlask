@@ -1,0 +1,71 @@
+<style>
+    /*Меню в шапке сайта*/
+    nav {
+     display: flex;
+     flex-direction: row;
+    }
+    .four ul:nth-child(1) {
+        flex: 1;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction : row;
+
+      background: #520b50;
+    margin: -0.5em -0.5em 0em -0.5em;
+      padding-left: 0;
+    }
+
+    .four ul:nth-child(2) {
+        flex: 1;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction : row-reverse;
+
+      background: #520b50;
+    margin: -0.5em -0.5em 0em -0.5em;
+      padding-left: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 0;
+    }
+    .three{
+
+      padding: 0.3em 1em;
+      display: block;
+      color: #DDDDDD;
+      border-right: 1px solid #FFAB51;
+      background: #a60522;
+    }
+    .five{
+
+      padding: 0.3em 1em;
+      display: block;
+      color: #DDDDDD;
+      border-left: 1px solid #FFAB51;
+      background: #a60522;
+    }
+    .four a:hover {background: #6B0369}
+    .four a:visited  {color: #DDDDDD}
+</style>
+
+<nav class='four'>
+    <ul class='header'>
+        <li><a class='three' href=" {{url_for('index')}} ">Главная</a></li>
+        <li><a class='three' href=" {{url_for('photos')}} ">Фотогалерея</a></li>
+    </ul>
+
+    <ul class='header'>
+        {% if session.get('NICK') %}
+        <li><a class='five' href= " {{url_for('myprofile')}} ">{{ session.get('NICK') }}</a></li>
+        {% else %}
+        <li><a class='five' href=" {{url_for('login')}} ">Войти</a></li>
+        {% endif %}
+        <li><a class='five' href=" {{url_for('terms')}} ">Правила</a></li>
+        {% if session.get('RANG') and session.get('RANG') >=40 %}
+        <li><a class='five' href=" {{url_for('jour')}} ">Редакторам</a></li>
+        {% endif %}
+    </ul>
+</nav>
+

@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{{ url_for('static', filename='tables5.css') }}" rel="stylesheet" type="text/css">
+
+<link rel='icon' href='/static/111.png' type='image/png'>
+    <title>Парки ПС [Провобус]</title>
+
+</head>
+
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>{{name}}</h2>
+
+<table>
+    {% for atp in atps %}
+    <tr> <td width="30px" rowspan="2">{{ park_stages[atp['STAGE']] }}</td><th class="{{type}}"><a href="/mvps/{{atp['ATP_ID']}}">{{atp['NAME']}}</a></th></tr><tr><td class="info">{{atp['ABOUT']}}
+    {% if atp['CITI_ROUTES'] %}<br>Городские: {{ atp['CITI_ROUTES'] }}{% endif %}
+    {% if atp['COMMUTER_ROUTES'] %}<br>Пригородные: {{ atp['COMMUTER_ROUTES'] }}{% endif %}
+    {% if atp['INTERCITY_ROUTES'] %}<br>Междугородние:{{ atp['INTERCITY_ROUTES'] }}{% endif %}
+    {% if atp['VK'] %}<br><a href="https://vk.com/{{ atp['VK'] }}">vk.com/{{ atp['VK'] }}</a>{% endif %}</td></tr>
+    {% endfor %}
+</table>
+
+ {% for cat in cats %}
+    <a class="cat" href="/kategory/{{cat['CATS_ID']}}">{{cat['NAME']}}</a>
+    {% endfor %}
+
+</body>
+</html>
+

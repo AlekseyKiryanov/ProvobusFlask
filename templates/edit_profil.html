@@ -1,0 +1,223 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <link rel='icon' href='/static/111.png' type='image/png'>
+  <title>Редактирование профиля [Провобус]</title>
+  <style>
+   body{
+
+  	background: #101010;
+  color: #DDDDDD;
+	}
+h1{
+text-align: center;
+background: #6B0369 ;
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+margin: 0em -0.35em 1px -0.35em;
+color: #DDDDDD;
+}
+h5 {
+text-align: center;
+width: 100%;
+}
+h2{
+    color: #FF0000;
+font-size: 1.4em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 20px -0.35em;
+}
+h3{
+font-size: 23px;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0.1em -0.35em;
+}
+
+.label{
+padding: 10px;
+background-color: #444444;
+text-align: center;
+	width: 700px;
+margin: auto;
+}
+img {margin: 15px 0px 15px 15px;
+max-height:40px;
+float: left;
+}
+.button{
+text-decoration: none;
+}
+
+a:link {
+
+  color: #DDDDDD;
+  /*background: #6B0369;*/
+  font-family: Arial;
+  font-weight: bold;
+}
+a:visited {
+
+  color: #AAAAAA;
+  /*background: rgba(0, 0, 0, 0);*/
+  font-family: Arial;
+  font-weight: normal;
+}
+input[type=text] {
+font-size: 20px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=submit] {
+font-size: 20px;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+input[type=submit]:hover {
+  border: 3px solid #555;
+}
+
+select {
+font-size: 20px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+select:focus {
+  border: 3px solid #555;
+}
+
+textarea {
+font-size: 20px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+label {
+  color: #DDDDDD;
+font-size: 20px;
+	
+}
+caption{
+  color: #DDDDDD;
+font-size: 25px;
+	
+}
+
+textarea:focus {
+  border: 3px solid #555;
+}
+
+
+table{
+
+width: 95%;
+margin: auto;
+}
+ </style>
+ </head>
+ <body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>Редактирование профиля</h2>
+
+<section>
+   <div class='label'>
+      <form>
+      <table>
+       <caption>Обязательная информация</caption>
+       <tr><td width='40%'><label for="name">Ваше имя:<br>(до 30 символов)</label></td><td width='60%'><input type="text" id="name" name="name" value="{{profile['NAME']}}"></td></tr>
+       <tr><td width='40%'><label for="nick">Никнейм для сайта:<br>(от 3 до 30 символов)</label></td><td width='60%'><input type="text" id="nick" name="nick" value="{{profile['NICK']}}"></td></tr>
+       <tr><td width='40%'><label for="nick">Ссылка на страницу ВК:</label></td><td width='60%'>
+      <select id="vkshow" name="vkshow">
+{% if profile['SHOWVK']==1 %}
+        <option value='0'>Скрыта и видна только редакции сайта</option>
+        <option value='1' selected='selected'>Доступна всем пользователям сайта</option>
+{% else %}
+        <option value='0' selected='selected'>Скрыта и видна только редакции сайта</option>
+        <option value='1'>Доступна всем пользователям сайта</option>
+{% endif %}
+        
+      </select>
+</td></tr>
+      </table>
+      <table>
+       <caption>Дополнительные данные</caption>
+       <tr><td width='40%'><label for="name">Расскажите о себе:<br>(до 400 символов, есть поддержка HTML разметки)</label></td><td width='60%'><textarea id="about" name="about">{{profile['ABOUT']}}</textarea></td></tr>
+       <tr><td width='40%'><label for="name">Информация о никнеймах<br>и серверах:<br>(до 200 символов)</label></td><td width='60%'><textarea id="nickname" name="nickname">{{profile['NICKNAME']}}</textarea></td></tr>
+       <tr><td width='40%'><label for="name">Любимый автобус:<br>(до 50 символов)</label></td><td width='60%'><input type="text" id="bus" name="bus" value="{{profile['BUS']}}"></td></tr>
+
+      </table>
+<input type="submit" value="Сохранить изменения">
+      </form>
+
+
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', evt => {
+	if ( document.querySelector('[name="name"]').value.length > 30 || document.querySelector('[name="name"]').value === ''){
+           alert('Некоррекная длина имени');
+	} else if ( document.querySelector('[name="nick"]').value.length > 30 || document.querySelector('[name="nick"]').value.length < 3){
+           alert('Некоррекная длина никнейма для сайта');
+	} else if ( document.querySelector('[name="about"]').value.length > 400){
+           alert('Некоррекная длина описания');
+	} else if ( document.querySelector('[name="nickname"]').value.length > 200){
+           alert('Некоррекная длина игровых ников');
+	} else if ( document.querySelector('[name="bus"]').value.length > 50){
+           alert('Некоррекная длина автобуса');
+	} else{
+           //alert('Успех');
+
+        evt.preventDefault();
+        fetch('/edit_profil_form', {
+            method: 'POST',
+            body: new FormData(form)
+        }).then(function(response){
+            window.location.href = "/myprofile";
+        }).catch(function(error){
+        console.log(error);
+        });
+
+	}
+
+        
+    })
+</script>
+   </div>
+</section> 
+</body>
+</html>

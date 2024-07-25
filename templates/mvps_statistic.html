@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel='icon' href='/static/111.png' type='image/png'>
+    <link href="/static/tables8.css" rel="stylesheet" type="text/css">
+
+
+    <title>Список ПС [Провобус]</title>
+
+</head>
+
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>Статистика подвижного состава</h2>
+
+
+<a href="/mvps/{{ atp['ATP_ID']}}"><h2>{{ atp['NAME']}}</h2></a>
+
+
+{% if not okey %}
+
+<h3>В БД нет данных, удовлетворяющих условиям поиска</h3>
+
+{% endif %}
+<section>
+<div class='label'>
+<table width="70%">
+    <caption>Активный ПС</caption>
+    <tr>
+        <th width="80%">Модель</th>
+        <th width="20%">Количество</th>
+    </tr>
+    {% for bus in buses %}
+
+
+    <tr class="stage0">
+        <td>{{ bus['MODEL'] }}</td>
+        <td>{{ bus['CA'] }}/{{ bus['CB'] }}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+</div>
+    <div class='label'>
+<table>
+    <caption>Используемый ранее ПС</caption>
+    <tr>
+        <th width="80%">Модель</th>
+        <th width="20%">Количество</th>
+    </tr>
+        {% for bus in deleted %}
+
+
+    <tr class="stage0">
+        <td>{{ bus['MODEL'] }}</td>
+        <td>{{ bus['CB'] }}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+    </div>
+</section>
+
+
+</body>
+</html>
+

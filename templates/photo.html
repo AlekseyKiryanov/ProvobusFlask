@@ -1,0 +1,101 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{{ url_for('static', filename='tables4.css') }}" rel="stylesheet" type="text/css">
+    <title>Фотография [Провобус]</title>
+    <link rel='icon' href='/static/111.png' type='image/png'>
+
+</head>
+
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+
+<table class='indextable'>
+    <tr>
+        <td width='75%'><img src="{{'/get_image/' + photo['PHOTO_ID'] }}"></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr width='75%' class='stage0'>
+        <td>
+            {% for route in routes %}
+            <a href="/mvps/{{ route['ATP_ID'] }}">{{ route['NAME'] }}</a> {{ route['MODEL'] }} <a
+                href="/vehicle/{{ route['BUS_ID'] }}">{{ route['GOS_NUMBER'] }}</a> {{ route['ROUTE'] }}<br>
+            {% endfor %}
+            {% for cat in cats %}
+            <a href="/kategory/{{ cat['CATS_ID'] }}">{{ cat['NAME'] }}</a><br>
+            {% endfor %}
+
+            <br>{{ photo['TITLE'] }}<br>{{
+            photo['PHOTOABOUT'] }}
+            {% if photo['ISAI'] %}
+            <br>
+            ⚠ На фотографии присутствуют измененное содержание оригинальной игры, элементы программной обработки или
+            автоматически сгенированный контент ⚠
+
+            {% endif %}
+
+            <br>
+
+
+            {% if photo['ISAUTHOR'] %}
+            Автор:
+            {% else %}
+            Прислал:
+            {% endif %}
+            <a href="/profile/{{ photo['PROFILE_ID'] }}">{{ photo['NICK'] }}</a><br>
+            Дата: {{ photo['SCRINED'] }}
+        </td>
+    </tr>
+</table>
+
+
+<table class='indextable'>
+    <tr>
+        <td>
+            <div class='label'><h2>Оценка: {{ likes }}</h2>
+
+                {% if session.get('NICK') %}
+                {% if liked %}
+                <em>Вам понравилось</em>
+                {%else%}
+                <form method="post">
+                    <input type="submit" name="cmd" value="Поставить ''лайк''"/>
+                </form>
+                {% endif %}
+
+                {% if session.get('RANG')>=50 %}
+                <form action='/edit_photo_power' method="post">
+                    <input type='hidden' name='photo' value='{{photo["PHOTO_ID"]}}'/>
+                    <input type="submit" name="cmd" value="Редактировать описание"/>
+                </form>
+                {% endif %}
+
+                {% if session.get('RANG')>=47 %}
+                <form action='/okey_photo' method='post'>
+                    <input type='hidden' name='photo' value='{{photo["PHOTO_ID"]}}'/>
+                    <input type='hidden' name='comment' value='Будет переоценено'/>
+                    <input type='hidden' name='mark' value='3'/>
+                    <input type='submit' value='Переоценить'>
+                </form>
+                {% endif %}
+
+
+                {% else %}
+
+
+                <a href=" {{url_for('login')}} ">Войдите или зарегистрируйтесь,</a><br><em>чтобы оценивать
+                    фотографии</em>
+
+                {% endif %}
+
+
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

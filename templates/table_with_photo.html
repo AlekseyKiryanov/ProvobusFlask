@@ -1,0 +1,107 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel='icon' href='/static/111.png' type='image/png'>
+  <link href="/static/tables6.css" rel="stylesheet" type="text/css">
+
+
+  <title>Список ПС [Провобус]</title>
+
+ </head>
+
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>Список подвижного состава</h2>
+
+
+<h2>{{ atp['NAME']}}</h2>
+<div class='about_atp'> {{atp['ABOUT']}}
+    {% if atp['CITI_ROUTES'] %}<br>Городские: {{ atp['CITI_ROUTES'] }}{% endif %}
+    {% if atp['COMMUTER_ROUTES'] %}<br>Пригородные: {{ atp['COMMUTER_ROUTES'] }}{% endif %}
+    {% if atp['INTERCITY_ROUTES'] %}<br>Междугородние:{{ atp['INTERCITY_ROUTES'] }}{% endif %}
+    {% if atp['VK'] %}<br><a href="https://vk.com/{{ atp['VK'] }}">vk.com/{{ atp['VK'] }}</a>{% endif %}
+    <br><a href="/mvps_statistic/{{ atp['ATP_ID'] }}">Статистика подвижного состава</a>
+
+
+{% if session.get('RANG') and session.get('RANG') >=50 %}
+        <form action='/edit_atp' method='post'>
+            <input type='hidden' name='atp_id' value='{{ atp["ATP_ID"]}}'/>
+            <input type='submit' value='Редактировать парк'>
+        </form>
+{% endif %}
+</div>
+
+{% if not okey %}
+
+<h3>В БД нет данных, удовлетворяющих условиям поиска</h3>
+
+{% else %}
+
+<h3>Сортировка</h3>
+<table class='colors'>
+    <tr class='stage0'>
+        <td><a href="/sort/B">Умолчанию</a></td>
+        <td><a href="/sort/GOS_NUMBER">Номеру</a></td>
+        <td><a href="/sort/MODEL">Модели</a></td>
+        <td><a href="/sort/M">Постройке</a></td>
+        <td><a href="/sort/S">Старту</a></td>
+    </tr>
+</table>
+
+
+<table>
+    <tr><th width="15%">Фото</th><th width="10%">Номер</th><th width="20%">Модель</th><th width="7.5%">Построен</th><th width="7.5%">Старт</th>
+        <th width="7.5%">До</th><th width="7.5%">Списан</th><th width="10%">Парк</th><th width="15">Примечание</th></tr>
+  {% endif %}
+
+   {% for bus in buses %}
+
+
+    <tr class="stage{{ bus['STAGE'] }}">
+        {% if bus['PHOTO_ID']!='0' %}
+    <td><a href="{{'/photo/' + bus['PHOTO_ID'] }}"><img src="{{'/get_icon/' + bus['PHOTO_ID'] }}"></a></td>
+        {% else %}
+     <td><img src="/get_icon/0"></td>
+        {% endif %}
+        <td><a class='buslink' href="{{'/vehicle/' + bus['BUS_ID'] }}" >{{ bus['GOS_NUMBER'] }}</a>
+
+    </td><td>{{ bus['MODEL'] }}
+        </td><td>{% if bus['MADE'] and bus['MADE']!='00.0000' %}{{ bus['MADE'] }}{% endif %}
+        </td><td>{% if bus['START'] and bus['START']!='00.0000' %}{{ bus['START'] }}{% endif %}
+        </td><td>{% if bus['END'] and bus['END']!='00.0000' %}{{ bus['END'] }}{% endif %}
+        </td><td>{% if bus['DELETED'] and bus['DELETED']!='00.0000' %}{{ bus['DELETED'] }}{% endif %}
+        </td><td>{{ bus['PARK'] }}
+        </td><td>{{ bus['ABOUT'] }}
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% if okey %}
+<h3>Настройки</h3>
+<table class='colors'>
+    <tr class='stage0'><td><b>C фотографиями</b></td><td><a href="{{url_for('no_photo')}}">Без фотографий</a></td></tr>
+    <tr class='stage0'><td><b>Таблица</b></td><td><a href="{{url_for('no_table')}}">Плитка</a></td></tr>
+</table>
+
+
+
+
+<h3>Цветовые обозначения</h3>
+	<table class="colors">
+		<tr class="stage0"><td>Эксплуатируется</td></tr>
+		<tr class="stage2"><td>Эксплуатация не начиналась</td></tr>
+		<tr class="stage1"><td>Не используется</td></tr>
+		<tr class="stage3"><td>Ожидание исключения</td></tr>
+		<tr class="stage4"><td>Списан</td></tr>
+		<tr class="stage5"><td>Данные неизвестны</td></tr>
+		<tr class="stage6"><td>КВР с заменой кузова</td></tr>
+		<tr class="stage7"><td>Перемещен на другую площадку предприятия</td></tr>
+		<tr class="stage8"><td>Отправлен в другой город</td></tr>
+		<tr class="stage9"><td>Замена госномера на предприятии</td></tr>
+   </table>
+{% endif %}
+</body>
+</html>
+

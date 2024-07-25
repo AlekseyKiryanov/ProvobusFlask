@@ -1,0 +1,129 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Редакторам [Провобус]</title>
+  <link rel='icon' href='/static/111.png' type='image/png'>
+  <style>
+body{
+background: #101010;
+color: #DDDDDD;
+}
+h1{
+text-align: center;
+background: #6B0369 ;
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+margin: 0em -0.35em 1px -0.35em;
+color: #DDDDDD;
+}
+h2{
+font-size: 1.4em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0px -0.35em;
+}
+.label{
+padding: 10px;
+background-color: #444444;
+text-align: center;
+	width: 700px;
+margin: 20px auto;
+
+}
+a:link {
+
+  color: #DDDDDD;
+  /*background: #6B0369;*/
+  font-family: Arial;
+  font-weight: bold;
+}
+a:visited {
+
+  color: #AAAAAA;
+  /*background: rgba(0, 0, 0, 0);*/
+  font-family: Arial;
+  font-weight: normal;
+}
+
+
+
+caption{
+  color: #DDDDDD;
+font-size: 25px;
+	
+}
+
+textarea:focus {
+  border: 3px solid #555;
+}
+
+
+table{
+font-size: 20px;
+width: 95%;
+margin: auto;
+}
+
+.linkbutton {
+  text-align: center;
+  width: 300px;
+  height: 20px;
+  padding: 0.3em 1em;
+  display: block;
+  color: #DDDDDD;
+  border: 3px solid #ccc;
+  background-color: #444444;
+  margin: 10px auto 0px auto;
+}
+
+.linkbutton:hover {
+  border: 3px solid #555;
+}
+
+
+.moderation{
+    background-color: #8f7e00;
+}
+
+.banned{
+    background-color: #63000c;
+}
+
+ </style>
+ </head>
+ <body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+
+<h2>Кабинет редактора</h2>
+{% if session.get('RANG')> 50 %}
+
+<a class='linkbutton' href='/verification'>Верификация пользователей <b>({{ profiles }})</b></a>
+
+
+<a class='linkbutton' href='/photomoderation'>Фотопредложка <b>({{ photos }})</b></a>
+<a class='linkbutton' href='/busmoderation'>Предложка автобусов <b>({{ buses }})</b></a>
+
+<a class='linkbutton' href='/addBus'>Создать ПС</a>
+<a class='linkbutton' href='/addPark'>Создать парк</a>
+<a class='linkbutton' href='/add_cat'>Добавить категорию фотографий</a>
+<a class='linkbutton' href='/park/test'>Тестовые АТП</a>
+<a class='linkbutton' href='/photomoderation_bad'>Отклоненные фотографии</a>
+<a class='linkbutton' href='/busmoderation_bad'>Отклоненные автобусы</a>
+<a class='linkbutton' href='/photomoderation_lost'>Фотографии без привязки</a>
+<a class='linkbutton' href='/profiles'>Пользователи сайта</a>
+<a class='linkbutton' href='/logs'>Действия редакции</a>
+ {% endif %}
+
+
+ {% if session.get('RANG') == 47 %}
+
+<a class='linkbutton' href='/photomoderation'>Фотопредложка <b>({{ photos }})</b></a>
+<br>
+<a class='linkbutton' href='/photomoderation_bad'>Отклоненные фотографии</a>
+<br>
+<a class='linkbutton' href='/logs'>Действия редакции</a>
+ {% endif %}
+</body>
+</html>

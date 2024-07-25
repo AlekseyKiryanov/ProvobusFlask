@@ -1,0 +1,408 @@
+input[type=submit] {
+font-size: 20px;
+  width: 80%;
+  padding: 0px;
+  margin: -2px auto;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  background-color: #444444;
+  color: #DDDDDD;
+  height: 40px;
+  text-align: center;
+}
+
+form {
+width 100%;
+}
+
+
+input[type=submit]:hover {
+  border: 3px solid #555;
+}
+
+/*Фон*/
+body{
+  background: #101010;
+  color: #DDDDDD;
+}
+/*Блоки загловка*/
+section {
+    display: flex;
+    flex-flow: row wrap;
+      align-items: center;
+  justify-content: center;
+}
+div{
+    text-align: center;
+    width: 500px;
+    margin: 5px;
+}
+a:link {
+
+  color: #DDDDDD;
+  /*background: #6B0369;*/
+  font-family: Arial;
+  font-weight: bold;
+}
+a:visited {
+
+  color: #AAAAAA;
+  /*background: rgba(0, 0, 0, 0);*/
+  font-family: Arial;
+  font-weight: normal;
+}
+/*Заголовки*/
+.head{
+    text-decoration: none;
+}
+h1{
+text-align: center;
+background: #6B0369 ;
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+margin: 0em -0.35em 1px -0.35em;
+color: #DDDDDD;
+}
+h2{
+font-size: 1.4em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0.1em -0.35em;
+}
+h3{
+font-size: 1.2em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0.1em -0.35em;
+}
+/*Таблицы с транспортом*/
+table {
+	table-layout: fixed;
+	width: 98%;
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 0.5em auto;
+	font-family: Arial;
+text-align: center;
+}
+th {
+	background-color: #ffaa00;
+	color: #f7f7f7;
+}
+.stage0 {
+	background-color: #444444;
+	width: 400px;
+	margin-left: auto;
+    margin-right: auto;
+}
+.stage2 {
+	background-color: #02691d;
+	width: 400px;
+	margin-left: auto;
+    margin-right: auto;
+}
+.stage1 {
+	background-color: #8f7e00;
+	width: 400px;
+	margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+.stage3 {
+	background-color: #c91885;
+	width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.stage4 {
+	background-color: #63000c;
+	width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.stage5 {
+	background-color: #4a2004;
+		width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.stage6  {
+	background-color: #016a80;
+	width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.stage7 {
+    background-color: #015994;
+	width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.stage8 {
+	background-color: #45006e;
+	width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.stage9 {
+	background-color: #013280;
+	width: 400px;
+		margin-left: auto;
+    margin-right: auto;
+}
+/*****************/
+.Astage0 {
+	background-color: #444444;
+	width: 600px;
+	margin-left: auto;
+    margin-right: auto;
+}
+.Astage2 {
+	background-color: #02691d;
+	width: 600px;
+	margin-left: auto;
+    margin-right: auto;
+}
+.Astage1 {
+	background-color: #8f7e00;
+	width: 600px;
+	margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+.Astage3 {
+	background-color: #c91885;
+	width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.Astage4 {
+	background-color: #63000c;
+	width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.Astage5 {
+	background-color: #4a2004;
+		width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.Astage6  {
+	background-color: #016a80;
+	width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.Astage7 {
+    background-color: #015994;
+	width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.Astage8 {
+	background-color: #45006e;
+	width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.Astage9 {
+	background-color: #013280;
+	width: 600px;
+		margin-left: auto;
+    margin-right: auto;
+}
+.colors {
+	width: 600px;
+		margin: 0.2em auto;
+}
+/*Изображения в таблице ПС*/
+img {max-width:100%;
+max-height:100%;
+margin: -2px;
+}
+/*Таблицы с фотографиями*/
+.phototable {
+	table-layout: fixed;
+	width: 98%;
+	border-collapse: collapse;
+	border: 0px solid black;
+	margin: 0.5em auto;
+	font-family: Arial;
+    text-align: left;
+}
+/*Главная страница*/
+.indeximage {max-width:105%;
+max-height:105%;
+}
+.indextable {
+	table-layout: fixed;
+	width: 99%;
+	border-collapse: collapse;
+	border: 0px solid black;
+	
+	font-family: Arial;
+    text-align: center;
+}
+/*СТАРЫЕ ВЕРСИИ
+table {
+	table-layout: fixed;
+	width: 98%;
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 0.5em auto;
+	font-family: Arial;
+text-align: center;
+}
+
+.colours {
+	width: 50%;
+	
+
+}
+
+img {max-width:90%;
+max-height:90%;
+}
+
+
+
+.city {
+	color: rgb(139, 0, 0);
+}
+
+.uuuuuuuh1 {
+     background: #D9FFAD;
+  font-size: 32em;
+  font-family: Georgia, sans-serif;
+    margin: 5px;	
+
+
+color: rgb(139, 243, 0);
+
+}
+
+.aa {
+  font-weight: 800;
+color: rgb(0, 0, 255);
+}
+
+.ab {
+  font-weight: 700;
+ text-decoration: underline;
+}
+
+.stopped {
+	background-color: #e5d866;
+}
+
+.okey {
+	background-color: #f7f7f7;
+}
+.new {
+	background-color: #b0e9b0;
+}
+.stopped {
+	background-color: #e5d866;
+}
+.deleted {
+	background-color: rgb(187,187,187);
+}
+.brocken {
+	background-color: rgb(252,149,149);
+}
+.nothing {
+	background-color: rgb(215,172,125);
+}
+.modernized {
+	background-color: rgb(98,199,237);
+}
+.left {
+	background-color: rgb(200,162,200);
+}
+
+.tram {
+	background-color: rgb(191, 19, 19);
+	color: #f7f7f7;
+}
+
+.trol	 {
+	background-color: rgb(40, 67, 169);
+	color: #f7f7f7;
+}
+
+.metro {
+	background-color: rgb(63, 103, 147);
+	color: #f7f7f7;
+}
+
+.ebus {
+	background-color: rgb(205, 155, 8);
+	color: #f7f7f7;
+}
+
+
+
+.traml {
+	background-color: rgb(225, 170, 170);
+}
+
+.troll	 {
+	background-color: rgb(148, 169, 227);
+}
+
+.metrol {
+	background-color: rgb(98, 199, 237);
+}
+
+.ebusl {
+	background-color: rgb(229, 216, 102);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ul {
+  list-style: none; 
+  margin: 0 0;
+}
+a {
+  text-decoration: none;
+  transition: .4s linear;
+}
+i {
+  margin-right: 0px;
+}
+nav {
+  display: block;
+  margin: 0 0;
+}
+
+.four ul {
+  display: -webkit-flex; 
+  display: flex;
+  background: rgb(191, 19,19);
+  padding-left: 0;
+}
+.four a {
+  padding: 0.3em 1em;
+  display: block;
+  color: #f7f7f7;
+  border-right: 1px solid #FFAB51;
+  background: rgb(139, 0, 0);
+}
+.four a:hover {background: #FFAB51}*/

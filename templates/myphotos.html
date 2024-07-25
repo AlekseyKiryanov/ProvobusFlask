@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{{ url_for('static', filename='tables2.css') }}" rel="stylesheet" type="text/css">
+<link rel='icon' href='/static/111.png' type='image/png'>
+
+    <title>Мои фотографии [Провобус]</title>
+
+</head>
+
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+
+<h2>Мои фотографии</h2>
+
+
+<section>
+
+
+    {% for photo in photos %}
+    <div>
+        <table>
+            <tr>
+                <td><a href="{{'/photo/' + photo['PHOTO_ID'] }}" ><img src="{{'/get_icon/' + photo['PHOTO_ID'] }}"></a></td>
+            </tr>
+            <tr class="stage{{ photo['STAGE'] }}">
+                <td>
+                    {% if  photo["INFO"].split(";")[0] == "B" %}
+                    <a href='/vehicle/{{photo["INFO"].split(";")[1]}}'>{{photo["INFO"].split(";")[2]}}</a><br>{{photo["INFO"].split(";")[3]}}
+                    {% else %}
+                    <a href='/kategory/{{photo["INFO"].split(";")[1]}}'>{{photo["INFO"].split(";")[2]}}</a>
+                    {% endif %}
+                    <br><br><a href="{{'/photo/' + photo['PHOTO_ID'] }}" >{{ photo['TITLE'] }}</a><br>{{ photo['SCRINED'] }}
+
+
+
+
+                    <br><br>Комментарий редактора: {{ photo['COMMENT'] }}<br>Оценка: <b>{{ marks[photo['MODERATED']] }}</b>
+                </td>
+            <tr>
+        </table>
+    </div>
+    {% endfor %}
+
+
+</section>
+
+
+</body>
+</html>
+

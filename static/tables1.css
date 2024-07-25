@@ -1,0 +1,254 @@
+/*Фон*/
+body{
+  background: #101010;
+  color: #DDDDDD;
+}
+/*Ссылки*/
+a:link {
+
+  color: #DDDDDD;
+  /*background: #6B0369;*/
+  font-family: Arial;
+  font-weight: bold;
+}
+a:visited {
+
+  color: #DDDDDD;
+  /*background: rgba(0, 0, 0, 0);*/
+  font-family: Arial;
+  font-weight: bold;
+}
+/*Заголовки*/
+h1{
+text-align: center;
+background: #6B0369 ;
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+margin: 0em -0.35em 1px -0.35em;
+color: #DDDDDD;
+}
+h2{
+font-size: 1.4em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0.1em -0.35em;
+}
+h3{
+font-size: 1.2em;
+width: 100%;
+font-family: Georgia, sans-serif;
+text-align: center;
+margin: 0.1em -0.35em 0.1em -0.35em;
+}
+/*Новые фотографии*/
+.indeximage {max-width:101%;
+max-height:101%;
+}
+.indextable {
+	table-layout: fixed;
+	width: 99%;
+	border-collapse: collapse;
+	border: 0px solid black;
+	
+	font-family: Arial;
+    text-align: center;
+}
+/*Статистика*/
+.statistic {
+    text-align: center;
+
+    height: none;
+    width: 30%;
+
+
+
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+	background-color: #444444;
+		margin: 0.2em auto;
+
+}
+
+.statistic2 {
+    text-align: center;
+
+    height: none;
+    width: 70%;
+          border-radius: 15px;
+          box-shadow: 5px 2px 2px #222222;
+
+
+font-size: 1.5em;
+font-family: Georgia, sans-serif;
+	background-color: #444444;
+		margin: 0.2em auto;
+
+}
+
+.vk {
+ padding: 10px;
+}
+
+
+section {
+	    display: flex;
+    flex-flow: row wrap;
+      align-items: center;
+  justify-content: center;
+}
+
+
+.type {
+padding: 10px}
+
+
+.tram{
+    background: #ad1f1f;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+.troll{
+    background: #0000b3;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.mpatp{
+    background: 	#318131;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.ebus{
+    background: #d2802d;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.metro{
+    background: #2e95b8;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.fleet{
+    background: 	#3fa6a6;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.plane{
+    background: 	#713181;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.train{
+    background: #333333;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.atp01{
+    background: #adad1f;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.atp02{
+    background: #50b82e;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.atp03{
+    background: #c9621d;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.atp04{
+    background: #5719b3;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.atp05{
+    background: #cf1717;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.atp06{
+    background: #2eb8b8;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.atp07{
+    background: 	#8f2474;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.test{
+    background: 	#000000;
+    	height: 50px;
+	line-height: 50px;
+		width: 200px;
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+

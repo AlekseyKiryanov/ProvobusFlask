@@ -1,0 +1,130 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="провобус, провинция автобусы, провинция фото, провинция скриншоты, провинция чатп">
+    <link rel='icon' href='/static/111.png' type='image/png'>
+    <link href="{{ url_for('static', filename='tables1.css') }}" rel="stylesheet" type="text/css">
+    <title>Главная [Провобус]</title>
+
+    <!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+</head>
+
+<body>
+{% include '_menu.html' %}
+<h1>Транспорт Провинции</h1>
+<h2>Новые фотографии</h2>
+<table class='indextable'>
+    <tr>
+        {% for photo in photos %}
+        <td width=17%><a href="{{'/photo/' + photo['PHOTO_ID'] }}" ><img
+                src="{{'/get_icon/' + photo['PHOTO_ID'] }}" class='indeximage'></a></td>
+
+        {% endfor %}
+    </tr>
+</table>
+
+
+<div class="statistic2">
+    MTA Province - это не просто игра о транспорте. Это то транспортное комьюнити, которое ты так долго искал. Погрузиться в атмосферу транспорта можно еще глубже - если испытать на себе роль фотографа (редактора) Провинциальной адаптации проекта СТТС<br>
+    <a href="https://gtaprovince.ru/download">Начать играть сейчас</a><br>
+    Промокод для 2 сервера <b>PROVOBUS</b> - фотографировать вместе веселее и продуктивнее<br>
+    Внимание! Контент, представленный на сайте, отражает личное мнение загрузивших его пользователей и не претендует на достоверность
+</div>
+
+<h2>Муниципальные предприятия (на каждом сервере)</h2>
+<section>
+    <a href="/park/tram" class="type">
+        <div class="tram">Трамвай</div>
+    </a>
+    <a href="/park/troll" class="type">
+        <div class="troll">Троллейбус</div>
+    </a>
+    <a href="/park/mpatp" class="type">
+        <div class="mpatp">Автобус</div>
+    </a>
+    <a href="/park/ebus" class="type">
+        <div class="ebus">Электробус</div>
+    </a>
+    <a href="/park/metro" class="type">
+        <div class="metro">Метро</div>
+    </a>
+    <a href="/park/plane" class="type">
+        <div class="plane">Воздушный</div>
+    </a>
+    <a href="/park/fleet" class="type">
+        <div class="fleet">Водный</div>
+    </a>
+    <a href="/park/train" class="type">
+        <div class="train">Поезда</div>
+    </a>
+
+</section>
+
+<h2>Частные предприятия (на отдельных серверах)</h2>
+<section>
+
+    <a href="/park/atp01" class="type">
+        <div class="atp01">ЧАТП #1</div>
+    </a>
+    <a href="/park/atp02" class="type">
+        <div class="atp02">ЧАТП #2</div>
+    </a>
+    <a href="/park/atp03" class="type">
+        <div class="atp03">ЧАТП #3</div>
+    </a>
+    <a href="/park/atp04" class="type">
+        <div class="atp04">ЧАТП #4</div>
+    </a>
+
+    <a href="/park/atp05" class="type">
+        <div class="atp05">ЧАТП #5</div>
+    </a>
+    <a href="/park/atp06" class="type">
+        <div class="atp06">ЧАТП #6</div>
+    </a>
+    <a href="/park/atp07" class="type">
+        <div class="atp07">ЧАТП #7</div>
+    </a>
+    <a href="/park/atp00" class="type">
+        <div class="test">ЧАТП #ST</div>
+    </a>
+</section>
+
+<h2>Важные ссылки:</h2>
+<section>
+
+
+<!-- Put this div tag to the place, where the Group block will be -->
+<div class="vk" id="vk_groups1"></div>
+<script type="text/javascript">
+  VK.Widgets.Group("vk_groups1", {mode: 1, height: 200, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 67982598);
+</script>
+
+
+<!-- Put this div tag to the place, where the Group block will be -->
+<div class="vk" id="vk_groups2"></div>
+<script type="text/javascript">
+  VK.Widgets.Group("vk_groups2", {mode: 1, height: 200, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 224713141);
+</script>
+
+    <div id="vk_groups3"></div>
+<script type="text/javascript">
+  VK.Widgets.Group("vk_groups3", {mode: 1, height: 200, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 155846484);
+</script>
+
+
+    </section>
+
+<!-- <h2>Статистика сайта</h2>
+<div class="statistic">
+    Фотографий: {{ photo }}<br>
+    Пользователей: {{ profiles }}<br>
+    Парков: {{ parks }}<br>
+    Единиц ПС: {{ buses }}
+</div> -->
+
+</body>
+</html>
+
